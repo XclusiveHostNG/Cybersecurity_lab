@@ -1,0 +1,73 @@
+---
+- name: Apply baseline hardening controls
+  hosts: all
+  gather_facts: true
+  vars:
+    reboot_required: false
+
+  pre_tasks:
+    - name: Ensure facts are gathered
+      setup:
+
+  roles: []
+
+  tasks:
+    - name: Enforce minimal password length
+      ansible.builtin.lineinfile:
+        path: /etc/security/pwquality.conf
+        regexp: '^minlen'
+        line: 'minlen = 14'
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Ensure UFW is installed and enabled
+      ansible.builtin.package:
+        name: ufw
+        state: present
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Enable UFW
+      ansible.builtin.command: ufw --force enable
+      when: ansible_facts['os_family'] == 'Debian'
+      notify: reload ufw
+
+    - name: Configure Windows audit policy
+      ansible.windows.win_audit_policy_system:
+        policy: Logon
+        subcategory: Logon
+        success: enable
+        failure: enable
+      when: ansible_facts['os_family'] == 'Windows'
+
+    - name: Ensure Sysmon configuration is deployed
+      ansible.windows.win_copy:
+        src: files/sysmon-config.xml
+        dest: 'C:\\Tools\\sysmon\\sysmon-config.xml'
+      when: ansible_facts['os_family'] == 'Windows'
+
+    - name: Run compliance scan
+      ansible.builtin.shell: |
+        oscap xccdf eval \
+          --profile xccdf_org.ssgproject.content_profile_cis \
+          --results /var/tmp/oscap-results.xml \
+          /usr/share/xml/scap/ssg/content/ssg-ubuntu2204-ds.xml
+      args:
+        warn: false
+      register: oscap
+      changed_when: false
+      failed_when: oscap.rc not in [0, 2]
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: Record compliance summary
+      ansible.builtin.copy:
+        dest: /var/tmp/compliance-summary.txt
+        content: |
+          Compliance status: {{ 'pass' if oscap.rc == 0 else 'needs review' }}
+          Timestamp: {{ ansible_date_time.iso8601 }}
+      when:
+        - ansible_facts['os_family'] == 'Debian'
+        - oscap is defined
+
+  handlers:
+    - name: reload ufw
+      ansible.builtin.command: ufw reload
+      when: ansible_facts['os_family'] == 'Debian'

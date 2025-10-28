@@ -1,0 +1,19 @@
+# Ignore ISO images and large installers
+*.iso
+*.img
+
+# Ignore secrets and credentials
+secrets/
+*.key
+*.crt
+*.pem
+
+# Ignore local virtualization configs
+*.vbox
+*.vbox-prev
+*.vmx
+*.nvram
+
+# Ignore system files
+.DS_Store
+Thumbs.db
