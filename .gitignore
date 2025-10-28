@@ -1,0 +1,10 @@
+# Ignore large binary assets
+assets/iso/
+assets/appliances/
+assets/journal/
+labs/_compiled_reports/
+
+# Logs and temporary files
+*.log
+**/reports/*.txt
+**/reports/*.log
