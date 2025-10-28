@@ -39,7 +39,9 @@ The following high-level map shows how the lab documentation is organized.
 
 ### Detailed Directory Map
 
-Use the table below to quickly locate notable files. Treat it as a living index when adding new material.
+Use the table below to quickly locate notable files. Treat it as a living index when adding new material. A comprehensive
+tree that lists every tracked file lives in `docs/repo-structure.md` for times when you need an authoritative snapshot of the
+repository layout.
 
 | Path | Description |
 | ---- | ----------- |
