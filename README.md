@@ -58,6 +58,7 @@ repository layout.
 | `operations/monitoring-maturity.md` | SOC-inspired telemetry strategy and detection tuning cadence. |
 | `scripts/audit_lab.sh` | Health-check script validating critical services and EDR agent status. |
 | `scripts/bootstrap_lab.sh` | Helper script for configuring the management workstation with required tooling. |
+| `scripts/generate_repo_tree.py` | Utility to regenerate the repository tree snippet documented in `docs/repo-structure.md`. |
 | `threat_emulation/purple_team_exercises.md` | Scenario outlines mapping offensive actions to defensive validations. |
 
 ## Lab Philosophy

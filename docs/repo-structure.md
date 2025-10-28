@@ -26,36 +26,35 @@ The following tree lists every tracked file. Update this section when adding or 
 
 ```text
 .
-├── README.md
 ├── automation
-│   ├── README.md
 │   ├── ansible
-│   │   ├── README.md
 │   │   ├── files
 │   │   │   └── sysmon-config.xml
+│   │   ├── playbooks
+│   │   │   └── hardening.yml
 │   │   ├── inventory.yml
-│   │   └── playbooks
-│   │       └── hardening.yml
+│   │   └── README.md
 │   ├── pipelines
+│   │   ├── github-actions.yml
+│   │   └── README.md
+│   ├── terraform
+│   │   ├── main.tf
+│   │   ├── outputs.tf
 │   │   ├── README.md
-│   │   └── github-actions.yml
-│   └── terraform
-│       ├── README.md
-│       ├── main.tf
-│       ├── outputs.tf
-│       ├── terraform.tfvars.example
-│       └── variables.tf
+│   │   ├── terraform.tfvars.example
+│   │   └── variables.tf
+│   └── README.md
 ├── checklists
 │   ├── build-and-validation.md
 │   ├── hardening-checklist.md
 │   └── incident-response.md
 ├── docs
+│   ├── templates
+│   │   └── bom-template.csv
 │   ├── backlog.md
 │   ├── operational-calendar.md
 │   ├── repo-structure.md
-│   ├── setup-guide.md
-│   └── templates
-│       └── bom-template.csv
+│   └── setup-guide.md
 ├── journey
 │   ├── 01-getting-started.md
 │   ├── 02-first-lab-build.md
@@ -65,29 +64,34 @@ The following tree lists every tracked file. Update this section when adding or 
 │   ├── build_guides
 │   │   ├── pfsense.md
 │   │   └── proxmox.md
+│   ├── vm_templates
+│   │   ├── kali-linux.md
+│   │   ├── ubuntu-server.md
+│   │   └── windows-server.md
 │   ├── lab-overview.md
 │   ├── network-diagram.md
-│   ├── setup-checklist.md
-│   └── vm_templates
-│       ├── kali-linux.md
-│       ├── ubuntu-server.md
-│       └── windows-server.md
+│   └── setup-checklist.md
 ├── operations
-│   ├── README.md
+│   ├── reports
+│   ├── runbooks
+│   │   ├── log-review.md
+│   │   └── patch-management.md
 │   ├── monitoring-maturity.md
-│   └── runbooks
-│       ├── log-review.md
-│       └── patch-management.md
+│   ├── README.md
+│   └── service-catalog.md
 ├── resources
 │   ├── books.md
 │   └── online-courses.md
 ├── scripts
-│   ├── README.md
 │   ├── audit_lab.sh
-│   └── bootstrap_lab.sh
-└── threat_emulation
-    ├── adversary_profiles.md
-    └── purple_team_exercises.md
+│   ├── bootstrap_lab.sh
+│   ├── generate_repo_tree.py
+│   └── README.md
+├── threat_emulation
+│   ├── adversary_profiles.md
+│   └── purple_team_exercises.md
+├── .gitignore
+└── README.md
 ```
 
 ## Maintenance Tips
@@ -96,6 +100,8 @@ The following tree lists every tracked file. Update this section when adding or 
 - When adding a new directory, consider whether it needs an accompanying README to explain its purpose.
 - If a script or playbook depends on external tooling, document prerequisites in the relevant directory README and in the
   top-level `README.md` so new contributors are aware.
+- Regenerate the tree quickly with `python scripts/generate_repo_tree.py --label .` and paste the output into the code block
+  above so the listing stays accurate without installing the external `tree` utility.
 
 Maintaining an accurate structure reference helps future lab builders quickly orient themselves and prevents artifacts from
 getting lost as the repository grows.
