@@ -1,0 +1,8 @@
+Component,Description,Quantity,Unit Cost (USD),Vendor,Notes
+Hypervisor Server,8 core CPU / 64 GB RAM / 2 TB SSD,1,1200,Local Shop,Consider refurbished enterprise gear
+Managed Switch,8-port with VLAN support,1,120,Online Retailer,802.1Q tagging required
+Firewall Appliance,pfSense-compatible mini PC,1,300,Protectli,Optional if virtualizing pfSense on hypervisor
+NAS Storage,8 TB RAID-Z2 array,1,600,Self-built,Used for backups and log archives
+UPS,1500 VA line-interactive UPS,1,250,APC,Ensures graceful shutdown during outages
+Licenses,Security+ exam voucher,1,392,CompTIA,Replace with desired certification costs
+Miscellaneous,Cables, USB installers, rack shelves,1,150,Various,Track receipts for warranty claims

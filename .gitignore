@@ -14,6 +14,13 @@ secrets/
 *.vmx
 *.nvram
 
+# Ignore Terraform local state and vars
+*.tfstate
+*.tfstate.*
+terraform.tfvars
+.terraform/
+.terraform.lock.hcl
+
 # Ignore system files
 .DS_Store
 Thumbs.db

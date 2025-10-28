@@ -1,8 +1,12 @@
 # Lab Scripts
 
-This directory contains helper scripts used to automate routine maintenance and auditing tasks within the lab. Each script includes inline documentation describing prerequisites and usage examples.
+This directory contains helper scripts used to automate routine maintenance and auditing tasks within the lab. Each script
+includes inline documentation describing prerequisites and usage examples.
 
-- `audit_lab.sh` — Verifies that core services are reachable and security controls are active. Run it daily or after maintenance windows to confirm that hosts, web services, and EDR agents respond as expected.
+- `audit_lab.sh` — Verifies that core services are reachable and security controls are active. Run it daily or after maintenance
+  windows to confirm that hosts, web services, and EDR agents respond as expected.
+- `bootstrap_lab.sh` — Installs required command-line tooling (Ansible, Terraform, jq, etc.) on the management workstation and
+  prepares a workspace for lab-specific configuration files.
 
 Additional scripts can be added following the naming convention `<purpose>_<area>.sh` and should:
 
