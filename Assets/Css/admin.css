@@ -1,0 +1,26 @@
+body {
+    background-color: #eef2f7;
+}
+
+.admin-sidebar {
+    min-height: 100vh;
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.admin-sidebar a {
+    color: rgba(255,255,255,0.85);
+    text-decoration: none;
+    display: block;
+    padding: .75rem 1rem;
+}
+
+.admin-sidebar a:hover,
+.admin-sidebar a.active {
+    background-color: rgba(255,255,255,0.1);
+    color: #fff;
+}
+
+.admin-content {
+    padding: 1.5rem;
+}
