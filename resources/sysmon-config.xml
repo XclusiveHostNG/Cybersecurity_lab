@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Sysmon schemaversion="4.60">
+  <HashAlgorithms>*</HashAlgorithms>
+  <EventFiltering>
+    <RuleGroup name="Process Creation" groupRelation="or">
+      <ProcessCreate onmatch="include">
+        <CommandLine condition="contains">powershell.exe</CommandLine>
+        <CommandLine condition="contains">cmd.exe /c</CommandLine>
+        <ParentImage condition="is">C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe</ParentImage>
+      </ProcessCreate>
+    </RuleGroup>
+    <RuleGroup name="Network Connections" groupRelation="or">
+      <NetworkConnect onmatch="include">
+        <DestinationPort condition="is">4444</DestinationPort>
+        <Image condition="contains">\\Meterpreter\\</Image>
+      </NetworkConnect>
+    </RuleGroup>
+    <RuleGroup name="File Creation" groupRelation="or">
+      <FileCreate onmatch="include">
+        <TargetFilename condition="contains">\\Temp\\nc.exe</TargetFilename>
+        <TargetFilename condition="end with">.ps1</TargetFilename>
+      </FileCreate>
+    </RuleGroup>
+  </EventFiltering>
+</Sysmon>
