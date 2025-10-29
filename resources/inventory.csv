@@ -1,0 +1,6 @@
+Hostname,Role,IP Address,Network,OS,Snapshot,Notes
+kali-offsec,Offensive Workstation,192.168.56.50,Management,Kali Linux Rolling,baseline-tools,Primary attacker box
+metasploitable,Vulnerable Target,10.10.10.20,Lab Internal,Metasploitable 2,clean-install,Exploit practice VM
+win-dc01,Domain Controller,10.10.10.10,Lab Internal,Windows Server 2019,baseline-domain-controller,AD DS + DNS
+win10-client01,Workstation,10.10.10.30,Lab Internal,Windows 10 Enterprise,baseline-client,Domain-joined workstation
+so-sensor01,Monitoring,10.10.10.40,Lab Internal,Security Onion 2,baseline-sensor,Network monitoring stack
