@@ -1,0 +1,23 @@
+---
+all:
+  vars:
+    ansible_user: labadmin
+    ansible_ssh_private_key_file: ~/.ssh/lab_rsa
+  children:
+    core_services:
+      hosts:
+        pfsense.lab.local:
+          ansible_connection: ssh
+          ansible_port: 22
+        dc01.lab.local:
+          ansible_connection: winrm
+          ansible_port: 5986
+          ansible_winrm_transport: credssp
+    monitoring:
+      hosts:
+        graylog.lab.local:
+        wazuh.lab.local:
+    workstations:
+      hosts:
+        blue-ws01.lab.local:
+        red-kali.lab.local:

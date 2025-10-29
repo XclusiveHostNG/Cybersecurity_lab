@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Sysmon schemaversion="4.82">
+  <HashAlgorithms>md5,sha256</HashAlgorithms>
+  <EventFiltering>
+    <RuleGroup name="ProcessCreate" groupRelation="or">
+      <ProcessCreate onmatch="include">
+        <Image condition="end with">powershell.exe</Image>
+        <CommandLine condition="contains">-enc</CommandLine>
+      </ProcessCreate>
+    </RuleGroup>
+    <RuleGroup name="NetworkConnect" groupRelation="or">
+      <NetworkConnect onmatch="include">
+        <DestinationPort condition="is">4444</DestinationPort>
+        <DestinationIp condition="is">192.168.30.0/24</DestinationIp>
+      </NetworkConnect>
+    </RuleGroup>
+  </EventFiltering>
+</Sysmon>
